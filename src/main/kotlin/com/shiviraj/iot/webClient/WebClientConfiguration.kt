@@ -1,6 +1,5 @@
 package com.shiviraj.iot.webClient
 
-import WebClientWrapper
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpHeaders
