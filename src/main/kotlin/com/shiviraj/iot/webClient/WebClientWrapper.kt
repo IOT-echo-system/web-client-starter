@@ -1,10 +1,8 @@
 package com.shiviraj.iot.webClient
 
-import com.shiviraj.iot.loggingstarter.details.RequestDetails
-import com.shiviraj.iot.loggingstarter.logOnErrorResponse
-import com.shiviraj.iot.loggingstarter.logOnSuccessResponse
-import com.shiviraj.iot.loggingstarter.logger.Logger
-import org.springframework.http.HttpMethod
+import com.shiviraj.iot.loggingstarter.logOnError
+import com.shiviraj.iot.loggingstarter.logOnSuccess
+import com.shiviraj.iot.loggingstarter.serializer.DefaultSerializer
 import org.springframework.stereotype.Component
 import org.springframework.util.LinkedMultiValueMap
 import org.springframework.util.MultiValueMap
@@ -35,27 +33,21 @@ class WebClientWrapper(private val webClient: WebClient) {
                 }
             }
             .retrieve()
-            .bodyToMono(returnType)
-            .logOnSuccessResponse(
+            .bodyToMono(String::class.java)
+            .map {
+                DefaultSerializer.deserialize(it, returnType)
+            }
+            .logOnSuccess(
                 message = "GET request to Service successful",
                 skipAdditionalDetails = skipLoggingAdditionalDetails,
                 skipResponseBody = skipLoggingResponseBody,
-            ).logOnErrorResponse(
+            )
+            .logOnError(
                 errorCode = "API_FAILURE",
                 errorMessage = "GET request to Service failed",
-                skipAdditionalDetails = skipLoggingAdditionalDetails,
+                skipAdditionalDetails = skipLoggingAdditionalDetails
             )
-            .contextWrite {
-                val logger = Logger(this::class.java)
-                val requestDetails = RequestDetails.from(
-                    requestMethod = HttpMethod.GET,
-                    requestHeaders = headers,
-                    uriWithParams = url,
-                    context = it,
-                )
-                logger.apiRequestInfo(requestDetails)
-                it.put("startTime", LocalDateTime.now())
-            }
+            .contextWrite { it.put("startTime", LocalDateTime.now()) }
     }
 
     fun <T> post(
@@ -80,28 +72,21 @@ class WebClientWrapper(private val webClient: WebClient) {
                 }
             }.bodyValue(body)
             .retrieve()
-            .bodyToMono(returnType)
-            .logOnSuccessResponse(
+            .bodyToMono(String::class.java)
+            .map {
+                DefaultSerializer.deserialize(it, returnType)
+            }
+            .logOnSuccess(
                 message = "POST request to Service successful",
                 skipAdditionalDetails = skipLoggingAdditionalDetails,
                 skipResponseBody = skipLoggingResponseBody,
-            ).logOnErrorResponse(
+            )
+            .logOnError(
                 errorCode = "API_FAILURE",
                 errorMessage = "POST request to Service failed",
                 skipAdditionalDetails = skipLoggingAdditionalDetails,
             )
-            .contextWrite {
-                val logger = Logger(this::class.java)
-                val requestDetails = RequestDetails.from(
-                    requestMethod = HttpMethod.GET,
-                    requestHeaders = headers,
-                    uriWithParams = url,
-                    context = it,
-                    requestBody = body
-                )
-                logger.apiRequestInfo(requestDetails)
-                it.put("startTime", LocalDateTime.now())
-            }
+            .contextWrite { it.put("startTime", LocalDateTime.now()) }
     }
 
     private fun createUrlForRequest(
