@@ -14,6 +14,6 @@ minorVersion=$(echo $version | cut -d '.' -f 3)
 
 newVersion=$(echo $majorVersion.$minorVersion)
 
-mv ./build/libs/web-client-starter-0.0.1-plain.jar ./jar/version-0/web-client-starter-$newVersion.jar
+mv ./build/libs/iot-utils-starter-0.0.1-plain.jar ./jar/version-0/iot-utils-starter-$newVersion.jar
 echo $newVersion > ./jar/currentVersion.txt
-echo "create new jar ==> web-client-starter-$newVersion.jar"
+echo "create new jar ==> iot-utils-starter-$newVersion.jar"
