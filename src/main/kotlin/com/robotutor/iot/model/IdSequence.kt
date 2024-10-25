@@ -1,4 +1,4 @@
-package com.shiviraj.iot.utils.model
+package com.robotutor.iot.model
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document

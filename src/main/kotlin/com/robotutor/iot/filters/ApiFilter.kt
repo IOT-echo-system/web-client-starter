@@ -1,6 +1,6 @@
-package com.shiviraj.iot.utils.filters
+package com.robotutor.iot.filters
 
-import com.shiviraj.iot.loggingstarter.logOnSuccess
+import com.robotutor.loggingstarter.logOnSuccess
 import org.springframework.stereotype.Component
 import org.springframework.web.server.ServerWebExchange
 import org.springframework.web.server.WebFilter

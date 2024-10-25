@@ -1,6 +1,6 @@
-package com.shiviraj.iot.userService.exceptions
+package com.robotutor.iot.exceptions
 
-class UnAuthorizedException(
+class AccessDeniedException(
     serviceError: ServiceError,
     details: Map<String, Any> = emptyMap()
 ) : BaseException(serviceError, details)

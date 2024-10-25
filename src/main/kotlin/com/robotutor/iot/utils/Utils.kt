@@ -1,6 +1,6 @@
-package com.shiviraj.iot.utils.utils
+package com.robotutor.iot.utils
 
-import com.shiviraj.iot.userService.exceptions.BaseException
+import com.robotutor.iot.exceptions.BaseException
 import reactor.core.publisher.Mono
 
 fun <T : Any> createMono(content: T): Mono<T> {

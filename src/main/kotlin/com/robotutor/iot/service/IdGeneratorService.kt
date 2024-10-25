@@ -1,8 +1,7 @@
-package com.shiviraj.iot.utils.service
+package com.robotutor.iot.service
 
-import com.shiviraj.iot.utils.model.ID_SEQUENCE_COLLECTION
-import com.shiviraj.iot.utils.model.IdSequence
-import org.springframework.beans.factory.annotation.Autowired
+import com.robotutor.iot.model.ID_SEQUENCE_COLLECTION
+import com.robotutor.iot.model.IdSequence
 import org.springframework.data.mongodb.core.FindAndModifyOptions
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate
 import org.springframework.data.mongodb.core.query.Criteria

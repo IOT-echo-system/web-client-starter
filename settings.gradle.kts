@@ -1,1 +1,1 @@
-rootProject.name = "iot-utils-starter"
+rootProject.name = "web-client-starter"

@@ -1,6 +1,6 @@
-package com.shiviraj.iot.userService.exceptions
+package com.robotutor.iot.exceptions
 
-class BadDataException(
+class DuplicateDataException(
     serviceError: ServiceError,
     details: Map<String, Any> = emptyMap()
 ) : BaseException(serviceError, details)

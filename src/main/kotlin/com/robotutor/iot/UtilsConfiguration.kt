@@ -1,7 +1,7 @@
-package com.shiviraj.iot.utils
+package com.robotutor.iot
 
 import com.mongodb.ConnectionString
-import com.shiviraj.iot.utils.filters.ApiFilter
+import com.robotutor.iot.filters.ApiFilter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Primary

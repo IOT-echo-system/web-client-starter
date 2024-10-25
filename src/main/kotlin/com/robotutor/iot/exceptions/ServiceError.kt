@@ -1,4 +1,4 @@
-package com.shiviraj.iot.userService.exceptions
+package com.robotutor.iot.exceptions
 
 interface ServiceError {
     val errorCode: String
