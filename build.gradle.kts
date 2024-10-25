@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     id("org.springframework.boot") version "3.2.0"
     id("io.spring.dependency-management") version "1.1.4"
@@ -29,8 +27,8 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/IOT-echo-system/web-client-starter")
             credentials {
-                username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
-                password = project.findProperty("gpr.token") as String? ?: System.getenv("TOKEN")
+                username = project.findProperty("gpr.user") as String? ?: System.getenv("ACTOR")
+                password = project.findProperty("gpr.token") as String? ?: System.getenv("PAT_TOKEN")
             }
         }
     }
@@ -48,8 +46,8 @@ repositories {
     maven {
         url = uri("https://maven.pkg.github.com/IOT-echo-system/web-client-starter")
         credentials {
-            username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
-            password = project.findProperty("gpr.token") as String? ?: System.getenv("TOKEN")
+            username = project.findProperty("gpr.user") as String? ?: System.getenv("ACTOR")
+            password = project.findProperty("gpr.token") as String? ?: System.getenv("PAT_TOKEN")
         }
     }
 }
