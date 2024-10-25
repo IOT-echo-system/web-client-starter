@@ -11,7 +11,7 @@ import java.time.LocalDateTime
 
 
 @Component
-class ApiFilter : WebFilter {
+class WebApiFilter : WebFilter {
     override fun filter(exchange: ServerWebExchange, chain: WebFilterChain): Mono<Void> {
         val startTime = LocalDateTime.now()
         return chain.filter(exchange)

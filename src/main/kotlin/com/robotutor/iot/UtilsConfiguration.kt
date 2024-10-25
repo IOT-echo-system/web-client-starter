@@ -1,7 +1,7 @@
 package com.robotutor.iot
 
 import com.mongodb.ConnectionString
-import com.robotutor.iot.filters.ApiFilter
+import com.robotutor.iot.filters.WebApiFilter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Primary
@@ -22,6 +22,6 @@ class UtilsConfiguration(private val environment: Environment) {
 
     @Bean
     fun customApiFilter(): WebFilter {
-        return ApiFilter()
+        return WebApiFilter()
     }
 }
