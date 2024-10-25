@@ -27,8 +27,8 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/IOT-echo-system/web-client-starter")
             credentials {
-                username = project.findProperty("gpr.user") as String? ?: System.getenv("ACTOR")
-                password = project.findProperty("gpr.token") as String? ?: System.getenv("PAT_TOKEN")
+                username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.token") as String? ?: System.getenv("TOKEN")
             }
         }
     }
@@ -46,8 +46,8 @@ repositories {
     maven {
         url = uri("https://maven.pkg.github.com/IOT-echo-system/web-client-starter")
         credentials {
-            username = project.findProperty("gpr.user") as String? ?: System.getenv("ACTOR")
-            password = project.findProperty("gpr.token") as String? ?: System.getenv("PAT_TOKEN")
+            username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
+            password = project.findProperty("gpr.token") as String? ?: System.getenv("TOKEN")
         }
     }
 }
