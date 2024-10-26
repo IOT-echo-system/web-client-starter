@@ -24,13 +24,19 @@ jobs:
           arguments: build
 
       - name: Build with Gradle
-        run: ./gradlew build
+        run: |
+          echo "----------------------------"
+          echo $USERNAME
+          echo $TOKEN
+          echo $ACTOR
+          echo $PAT_TOKEN
+          ./gradlew clean build
         env:
           USERNAME: ${{ secrets.ACTOR }}
           TOKEN: ${{ secrets.PAT_TOKEN }}
 
       - name: Publish to GitHub Packages
-        run: ./gradlew publish
+        run: ./gradlew clean publish
         env:
           USERNAME: ${{ secrets.ACTOR }}
           TOKEN: ${{ secrets.PAT_TOKEN }}
