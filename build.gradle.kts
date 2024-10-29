@@ -12,7 +12,7 @@ publishing {
             from(components["java"])
             groupId = "com.robotutor"
             artifactId = "web-client-starter"
-            version = "1.0.1"
+            version = "1.0.2"
 
             pom {
                 name.set("Reactive Logging Starter")
@@ -43,13 +43,17 @@ java {
 
 repositories {
     mavenCentral()
-    maven {
-        url = uri("https://maven.pkg.github.com/IOT-echo-system/web-client-starter")
-        credentials {
-            username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
-            password = project.findProperty("gpr.token") as String? ?: System.getenv("TOKEN")
+    fun githubMavenRepository(name: String) {
+        maven {
+            url = uri("https://maven.pkg.github.com/IOT-echo-system/$name")
+            credentials {
+                username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.token") as String? ?: System.getenv("TOKEN")
+            }
         }
     }
+
+    githubMavenRepository("logging-starter")
 }
 
 dependencies {
@@ -58,7 +62,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation("com.google.code.gson:gson:2.8.9")
-    implementation("com.robotutor:logging-starter:1.0.2")
+    implementation("com.robotutor:logging-starter:1.0.0")
 }
 
 kotlin {
