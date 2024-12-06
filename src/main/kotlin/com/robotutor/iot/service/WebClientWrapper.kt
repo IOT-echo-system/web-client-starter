@@ -1,5 +1,7 @@
 package com.robotutor.iot.service
 
+import com.robotutor.loggingstarter.LogDetails
+import com.robotutor.loggingstarter.Logger
 import com.robotutor.loggingstarter.logOnError
 import com.robotutor.loggingstarter.logOnSuccess
 import org.springframework.stereotype.Component
@@ -13,6 +15,8 @@ import java.time.LocalDateTime
 
 @Component
 class WebClientWrapper(private val webClient: WebClient) {
+
+    private val logger = Logger(this::class.java)
 
     fun <T> get(
         baseUrl: String,
@@ -51,6 +55,14 @@ class WebClientWrapper(private val webClient: WebClient) {
                     additionalDetails = mapOf("method" to "GET", "path" to url)
                 )
                 .contextWrite { it.put("startTime", LocalDateTime.now()) }
+                .doOnSubscribe {
+                    logger.info(
+                        LogDetails(
+                            message = "Make request to Service successful",
+                            additionalDetails = mapOf("method" to "GET", "url" to url)
+                        )
+                    )
+                }
         }
     }
 
@@ -94,6 +106,14 @@ class WebClientWrapper(private val webClient: WebClient) {
                     additionalDetails = mapOf("method" to "POST", "path" to url)
                 )
                 .contextWrite { it.put("startTime", LocalDateTime.now()) }
+                .doOnSubscribe {
+                    logger.info(
+                        LogDetails(
+                            message = "Make request to Service successful",
+                            additionalDetails = mapOf("method" to "POST", "url" to url)
+                        )
+                    )
+                }
         }
     }
 
