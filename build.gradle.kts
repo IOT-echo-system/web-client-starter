@@ -15,8 +15,8 @@ publishing {
             version = "1.0.3"
 
             pom {
-                name.set("Reactive Logging Starter")
-                description.set("A reactive logging starter package")
+                name.set("Web client Starter")
+                description.set("A reactive web client starter package")
                 url.set("https://maven.pkg.github.com/IOT-echo-system/web-client-starter")
             }
         }
@@ -43,6 +43,7 @@ java {
 
 repositories {
     mavenCentral()
+
     fun githubMavenRepository(name: String) {
         maven {
             url = uri("https://maven.pkg.github.com/IOT-echo-system/$name")
@@ -68,6 +69,9 @@ dependencies {
 kotlin {
     compilerOptions {
         freeCompilerArgs.addAll("-Xjsr305=strict")
+    }
+    jvmToolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
     }
 }
 
