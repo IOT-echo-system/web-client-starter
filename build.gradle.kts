@@ -12,7 +12,7 @@ publishing {
             from(components["java"])
             groupId = "com.robotutor"
             artifactId = "web-client-starter"
-            version = "1.0.3"
+            version = "1.0.4"
 
             pom {
                 name.set("Web client Starter")
@@ -63,7 +63,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation("com.google.code.gson:gson:2.8.9")
-    implementation("com.robotutor:logging-starter:1.0.0")
+    implementation("com.robotutor:logging-starter:1.0.1")
 }
 
 kotlin {

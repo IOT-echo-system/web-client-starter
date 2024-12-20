@@ -1,4 +1,6 @@
 fileignoreconfig:
 - filename: build.gradle.kts
   checksum: ff661eb4aa9da829d5522190a3d704c3309ce03310d37fabe9f40b0a2bfe0d8c
+- filename: src/main/kotlin/com/robotutor/iot/service/WebClientWrapper.kt
+  checksum: e8aea59c46026b6b9a0f38dd931da8683afb290a0c0eee7690a4d13e93d8024d
 version: ""
