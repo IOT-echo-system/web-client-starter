@@ -1,9 +1,6 @@
 package com.robotutor.iot.controller
 
-import com.robotutor.iot.exceptions.BadDataException
-import com.robotutor.iot.exceptions.DataNotFoundException
-import com.robotutor.iot.exceptions.DuplicateDataException
-import com.robotutor.iot.exceptions.ErrorResponse
+import com.robotutor.iot.exceptions.*
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ControllerAdvice
@@ -11,6 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.support.WebExchangeBindException
 import org.springframework.web.server.ResponseStatusException
 import org.springframework.web.server.ServerWebInputException
+import kotlin.io.AccessDeniedException
 
 @ControllerAdvice
 class ApiExceptionHandler {
@@ -20,8 +18,8 @@ class ApiExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.errorResponse())
     }
 
-    @ExceptionHandler(com.robotutor.iot.exceptions.UnAuthorizedException::class)
-    fun handleUnAuthorizedException(ex: com.robotutor.iot.exceptions.UnAuthorizedException): ResponseEntity<ErrorResponse> {
+    @ExceptionHandler(UnAuthorizedException::class)
+    fun handleUnAuthorizedException(ex: UnAuthorizedException): ResponseEntity<ErrorResponse> {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ex.errorResponse())
     }
 
@@ -35,8 +33,8 @@ class ApiExceptionHandler {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.errorResponse())
     }
 
-    @ExceptionHandler(com.robotutor.iot.exceptions.TooManyRequestsException::class)
-    fun handleException(ex: com.robotutor.iot.exceptions.TooManyRequestsException): ResponseEntity<ErrorResponse> {
+    @ExceptionHandler(TooManyRequestsException::class)
+    fun handleException(ex: TooManyRequestsException): ResponseEntity<ErrorResponse> {
         return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS).body(ex.errorResponse())
     }
 
