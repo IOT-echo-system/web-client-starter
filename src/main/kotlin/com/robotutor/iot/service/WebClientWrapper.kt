@@ -143,16 +143,16 @@ class WebClientWrapper(private val webClient: WebClient) {
                 .retrieve()
                 .bodyToFlux(returnType)
                 .logOnSuccess(
-                    message = "POST request to Service successful",
+                    message = "GET request to Service successful",
                     skipAdditionalDetails = skipLoggingAdditionalDetails,
                     skipResponseBody = skipLoggingResponseBody,
-                    additionalDetails = mapOf("method" to "POST", "path" to url)
+                    additionalDetails = mapOf("method" to "GET", "path" to url)
                 )
                 .logOnError(
                     errorCode = "API_FAILURE",
-                    errorMessage = "POST request to Service failed",
+                    errorMessage = "GET request to Service failed",
                     skipAdditionalDetails = skipLoggingAdditionalDetails,
-                    additionalDetails = mapOf("method" to "POST", "path" to url)
+                    additionalDetails = mapOf("method" to "GET", "path" to url)
                 )
                 .contextWrite { it.put("startTime", LocalDateTime.now()) }
                 .doOnSubscribe {
